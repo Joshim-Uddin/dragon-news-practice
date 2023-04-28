@@ -13,9 +13,14 @@ import bg from "../../assets/bg.png";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
 const RighNav = () => {
-  const { googleSignIn, setUser } = useContext(AuthContext);
+  const { googleSignIn, setUser, githubSignIn } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
     googleSignIn()
+      .then((result) => setUser(result.user))
+      .catch((error) => console.log(error));
+  };
+  const handleGithubSignIn = () => {
+    githubSignIn()
       .then((result) => setUser(result.user))
       .catch((error) => console.log(error));
   };
@@ -30,7 +35,11 @@ const RighNav = () => {
         >
           <FaGoogle className="me-2" /> Login With Google
         </Button>
-        <Button variant="outline-secondary" className="mb-2 w-100">
+        <Button
+          variant="outline-secondary"
+          className="mb-2 w-100"
+          onClick={handleGithubSignIn}
+        >
           <FaGithub className="me-2" /> Login With Github
         </Button>
       </div>
