@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
+  TwitterAuthProvider,
 } from "firebase/auth";
 
 import app from "../../firebase/firebase.config";
@@ -15,6 +16,7 @@ import app from "../../firebase/firebase.config";
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
 export const AuthContext = createContext(null);
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -29,6 +31,9 @@ const AuthProviders = ({ children }) => {
   };
   const githubSignIn = () => {
     return signInWithPopup(auth, gitHubProvider);
+  };
+  const twitterSignIn = () => {
+    return signInWithPopup(auth, twitterProvider);
   };
   const logOut = () => {
     return signOut(auth);
@@ -49,6 +54,7 @@ const AuthProviders = ({ children }) => {
     logOut,
     googleSignIn,
     githubSignIn,
+    twitterSignIn,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

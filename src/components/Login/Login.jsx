@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Container, Form } from "react-bootstrap";
 import Navbar from "../Navbar/Navbar";
 import { AuthContext } from "../AuthProviders/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { user, signInUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -61,6 +61,7 @@ const Login = () => {
           </p>
         </div>
       </form>
+      {user && <Navigate to="/"></Navigate>}
     </Container>
   );
 };

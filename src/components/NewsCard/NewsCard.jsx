@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
   const { _id, author, image_url, rating, title, details, total_view } = news;
-  console.log(news);
   return (
     <Card className="mb-4">
       <Card.Header>

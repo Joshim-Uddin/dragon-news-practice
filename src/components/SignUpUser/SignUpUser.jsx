@@ -12,9 +12,14 @@ const SignUpUser = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    signUpUser(email, password)
-      .then((result) => result.user)
-      .catch((error) => console.log(error));
+    const checkbox = form.checkbox.checked;
+    if (checkbox) {
+      signUpUser(email, password)
+        .then((result) => result.user)
+        .catch((error) => console.log(error));
+    } else {
+      alert("Accept the Codition");
+    }
   };
   return (
     <Container>
@@ -25,38 +30,38 @@ const SignUpUser = () => {
       >
         <h3 className="text-center my-3">Register Your Account</h3>
         <div className="text-left">
-          <div class="mb-3">
-            <label for="exampleInputName" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="exampleInputName" className="form-label">
               Your Name
             </label>
             <input
               type="text"
               name="name"
-              class="form-control"
+              className="form-control"
               id="exampleInputName"
               aria-describedby="nameHelp"
             />
           </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
               type="email"
               name="email"
-              class="form-control"
+              className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
               type="password"
               name="password"
-              class="form-control"
+              className="form-control"
               id="exampleInputPassword1"
             />
           </div>
@@ -68,12 +73,12 @@ const SignUpUser = () => {
             id="checkbox"
             className="me-2"
           />
-          <label for="checkbox" class="form-label">
+          <label htmlFor="checkbox" className="form-label">
             Accept Term & Conditions
           </label>
         </div>
         <div className="text-center">
-          <button type="submit" class="btn btn-dark w-100">
+          <button type="submit" className="btn btn-dark w-100">
             Register
           </button>
         </div>

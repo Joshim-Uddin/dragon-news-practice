@@ -13,7 +13,8 @@ import bg from "../../assets/bg.png";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 
 const RighNav = () => {
-  const { googleSignIn, setUser, githubSignIn } = useContext(AuthContext);
+  const { googleSignIn, setUser, githubSignIn, twitterSignIn } =
+    useContext(AuthContext);
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => setUser(result.user))
@@ -21,6 +22,11 @@ const RighNav = () => {
   };
   const handleGithubSignIn = () => {
     githubSignIn()
+      .then((result) => setUser(result.user))
+      .catch((error) => console.log(error));
+  };
+  const handleTwitterSignIn = () => {
+    twitterSignIn()
       .then((result) => setUser(result.user))
       .catch((error) => console.log(error));
   };
@@ -41,6 +47,13 @@ const RighNav = () => {
           onClick={handleGithubSignIn}
         >
           <FaGithub className="me-2" /> Login With Github
+        </Button>
+        <Button
+          variant="outline-warning"
+          className="mb-2 w-100"
+          onClick={handleTwitterSignIn}
+        >
+          <FaTwitter className="me-2" /> Login With Twitter
         </Button>
       </div>
       <div>
