@@ -1,0 +1,13 @@
+.user{
+    width: 32px;
+    height: 32px;
+    
+}
+.author-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+}
+.signup, .login{
+    width: 35%;
+}
