@@ -22,13 +22,18 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <Category />,
-            loader: () => fetch(`http://localhost:5000/categories/0`),
+            loader: () =>
+              fetch(
+                `https://dragon-news-server-joshim-uddin.vercel.app/categories/0`
+              ),
           },
           {
             path: "/category/:id",
             element: <Category></Category>,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/categories/${params.id}`),
+              fetch(
+                `https://dragon-news-server-joshim-uddin.vercel.app/categories/${params.id}`
+              ),
           },
         ],
       },
@@ -53,7 +58,10 @@ const router = createBrowserRouter([
         <News />
       </PrivateRoutes>
     ),
-    loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`),
+    loader: ({ params }) =>
+      fetch(
+        `https://dragon-news-server-joshim-uddin.vercel.app/news/${params.id}`
+      ),
   },
   {
     path: "/login",

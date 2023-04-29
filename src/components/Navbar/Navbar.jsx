@@ -20,7 +20,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="text-end me-5 d-flex align-items-center gap-3">
-        <FaUserCircle className="user"></FaUserCircle>
+        {user && <FaUserCircle className="user"></FaUserCircle>}
         <button className="btn btn-dark">
           {user ? (
             <Link className="text-white text-decoration-none" onClick={logOut}>
